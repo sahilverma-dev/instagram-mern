@@ -14,16 +14,18 @@ const App = () => {
   return (
     <BrowserRouter>
       <Header />
-      <AnimatePresence>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/p/:postID" element={<Post />} />
-          <Route path="/:username" element={<Profile />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </AnimatePresence>
+      <div className="p-3 max-w-6xl  mx-auto">
+        <AnimatePresence>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/p/:postID" element={<Post />} />
+            <Route path="/:username" element={<Profile />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </AnimatePresence>
+      </div>
     </BrowserRouter>
   );
 };

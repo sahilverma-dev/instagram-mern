@@ -6,7 +6,7 @@ import { BiHeart as HeartIcon } from "react-icons/bi";
 import { formatNumder } from "../utilities";
 
 import { Link } from "react-router-dom";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion } from "framer-motion";
 import { postVarients } from "../constants/varients";
 
@@ -19,15 +19,18 @@ const PostCard = ({ post }) => {
       animate="visible"
       exit="exit"
     >
-      <img
-        className="block aspect-square object-cover object-center"
-        src={post.postImage}
-        alt={post.cation}
-      />
+      <Link to={`/p/${post.id}`}>
+        <LazyLoadImage
+          placeholderSrc="https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg"
+          className="block aspect-square object-cover object-center"
+          src={post.postImage}
+          alt={post.cation}
+        />
+      </Link>
       <div className="flex items-center justify-between p-2">
         <div className="flex gap-2">
           <Link to={`/${post.user.username}`}>
-            <img
+            <LazyLoadImage
               src={post.user.profilePic}
               alt={post.user.username}
               className="block h-9 w-9 aspect-square object-cover object-top rounded-full"
@@ -40,7 +43,10 @@ const PostCard = ({ post }) => {
         </div>
         <div className="flex items-center gap-1">
           {post.likes > 0 && (
-            <p className="text-sm font-semibold mr-2">
+            <p
+              className="text-sm font-semibold mr-2"
+              title={`${post.likes} likes`}
+            >
               {formatNumder(post.likes)} likes
             </p>
           )}

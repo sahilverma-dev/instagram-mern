@@ -61,7 +61,7 @@ const Header = () => {
   return (
     <div
       className={`px-4 ${
-        sticky ? "sticky top-0 py-4" : "py-6"
+        sticky ? "sticky top-0 py-4 shadow-lg z-50" : "py-6"
       } bg-white w-full transition-all`}
     >
       <div className="max-w-7xl mx-auto flex  items-center justify-between">
@@ -75,7 +75,7 @@ const Header = () => {
             />
           </div>
         </Link>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           {navigationData.map((item, index) => (
             <NavLink
               key={index}
