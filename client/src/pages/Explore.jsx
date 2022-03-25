@@ -4,15 +4,18 @@ import { motion } from "framer-motion";
 
 import { fakePostData } from "../constants/fakePostData";
 import ProfilePostCard from "../components/ProfilePostCard";
+import { pageVariants } from "../constants/varients";
 
 const Explore = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: -100 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 100 }}
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="lg:p-3 p-1 max-w-6xl  mx-auto"
     >
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid lg:grid-cols-4 grid-cols-3 gap-1 lg:gap-5">
         {fakePostData.map((post, index) => (
           <ProfilePostCard
             key={post.id}

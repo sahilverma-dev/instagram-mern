@@ -9,23 +9,23 @@ import Register from "../pages/Register";
 import Header from "./Header";
 
 import { AnimatePresence } from "framer-motion";
+import Footer from "./Footer";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Header />
-      <div className="p-3 max-w-6xl  mx-auto">
-        <AnimatePresence>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/explore" element={<Explore />} />
-            <Route path="/p/:postID" element={<Post />} />
-            <Route path="/:username" element={<Profile />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </AnimatePresence>
-      </div>
+      <AnimatePresence>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/p/:postID" element={<Post />} />
+          <Route path="/:username" element={<Profile />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </AnimatePresence>
+      <Footer />
     </BrowserRouter>
   );
 };

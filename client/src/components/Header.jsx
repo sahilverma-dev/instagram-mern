@@ -49,7 +49,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       window.onscroll = () => {
-        if (window.scrollY > 100) {
+        if (window.scrollY > 160) {
           setSticky(true);
         } else {
           setSticky(false);
@@ -61,8 +61,10 @@ const Header = () => {
   return (
     <div
       className={`px-4 ${
-        sticky ? "sticky top-0 py-4 shadow-lg z-50" : "py-6"
-      } bg-white w-full transition-all`}
+        sticky
+          ? "sticky top-0 py-4 shadow-lg z-50 bg-white md:bg-opacity-70 md:backdrop-blur"
+          : "md:py-4  bg-white"
+      }  w-full transition-all`}
     >
       <div className="max-w-7xl mx-auto flex  items-center justify-between">
         <Link to="/">
@@ -75,7 +77,7 @@ const Header = () => {
             />
           </div>
         </Link>
-        <div className="flex items-center gap-6">
+        <div className="md:flex hidden items-center gap-6">
           {navigationData.map((item, index) => (
             <NavLink
               key={index}
@@ -87,14 +89,17 @@ const Header = () => {
           ))}
         </div>
         <div className="flex items-center justify-end w-[120px] gap-3">
-          <Link to="/chat">
+          <Link to="/chat" className="block relative p-2 aspect-square">
+            {/* <div className="absolute top-0 right-0 aspect-square p-1 rounded-full text-white font-semibold bg-red-600"></div> */}
             <SendIcon size={20} />
           </Link>
-          <img
-            src="https://avatars.githubusercontent.com/u/83828231"
-            className="block h-7 w-7 aspect-square rounded-full border"
-            alt="user"
-          />
+          <Link to="/profile">
+            <img
+              src="https://avatars.githubusercontent.com/u/83828231"
+              className="block h-7 w-7 aspect-square rounded-full border border-black"
+              alt="user"
+            />
+          </Link>
         </div>
       </div>
     </div>

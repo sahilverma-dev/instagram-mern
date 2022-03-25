@@ -33,7 +33,7 @@ const PostCard = ({ post }) => {
             <LazyLoadImage
               src={post.user.profilePic}
               alt={post.user.username}
-              className="block h-9 w-9 aspect-square object-cover object-top rounded-full"
+              className="block h-9 w-9 border border-gray-400 aspect-square object-cover object-top rounded-full"
             />
           </Link>
           <div>
