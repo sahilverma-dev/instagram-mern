@@ -11,6 +11,7 @@ import Header from "./Header";
 import { AnimatePresence } from "framer-motion";
 import Footer from "./Footer";
 
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/:username" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          
         </Routes>
       </AnimatePresence>
       <Footer />

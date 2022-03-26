@@ -10,7 +10,10 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion } from "framer-motion";
 import { postVarients } from "../constants/varients";
 
-const PostCard = ({ post }) => {
+const PostCard = ({post}) => {
+
+  
+
   return (
     <motion.div
       layout
