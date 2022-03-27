@@ -15,6 +15,14 @@ const UserSchema = new Schema(
       type: String,
       required: [true, "Email is required"],
     },
+    link: {
+      type: String,
+    },
+    category: {
+      type: String,
+      required: [true, "Category is required"],
+      default: "Normal User",
+    },
     password: {
       type: String,
       required: [true, "Password is required"],

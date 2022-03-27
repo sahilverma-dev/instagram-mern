@@ -15,6 +15,7 @@ import { MdExplore as ExploreActiveIcon } from "react-icons/md";
 import { RiHeartFill as HeartInActiveIcon } from "react-icons/ri";
 import { RiHeartLine as HeartActiveIcon } from "react-icons/ri";
 import { FiSend as SendIcon } from "react-icons/fi";
+import { useAuth } from "../context/authContext";
 
 const navigationData = [
   {
@@ -46,7 +47,9 @@ const navigationData = [
 const Header = () => {
   const [sticky, setSticky] = useState(false);
 
+  const { user } = useAuth();
   useEffect(() => {
+    console.log(user);
     const handleScroll = () => {
       window.onscroll = () => {
         if (window.scrollY > 160) {
@@ -63,7 +66,7 @@ const Header = () => {
       className={`px-4 ${
         sticky
           ? "sticky top-0 py-4 shadow-lg z-50 bg-white md:bg-opacity-70 md:backdrop-blur"
-          : "md:py-4  bg-white"
+          : "md:py-4 py-2 bg-white"
       }  w-full transition-all`}
     >
       <div className="max-w-7xl mx-auto flex  items-center justify-between">

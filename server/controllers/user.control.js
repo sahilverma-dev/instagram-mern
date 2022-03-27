@@ -60,8 +60,8 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 const loginUser = asyncHandler(async (req, res) => {
-  const { username, password } = req.body;
-  const user = await User.findOne({ username });
+  const { username, email, password } = req.body;
+  const user = await User.findOne({ email });
   if (!user) {
     res.status(400).json({
       status: 400,
@@ -90,7 +90,7 @@ const loginUser = asyncHandler(async (req, res) => {
     payload,
     process.env.JWT_SECRET,
     {
-      expiresIn: 3600,
+      expiresIn: "30d",
     },
     (err, token) => {
       if (err) {
@@ -142,7 +142,9 @@ const getUser = asyncHandler(async (req, res) => {
       name: user.name,
       username: user.username,
       email: user.email,
+      bio: user.bio,
       profilePic: user.profilePic,
+      posts: user.posts,
     },
   });
 });

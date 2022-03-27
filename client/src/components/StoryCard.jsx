@@ -9,6 +9,7 @@ const StoryCard = ({ profilePic, username }) => {
       <LazyLoadImage
         src={profilePic}
         alt={username}
+        placeholderSrc="https://via.placeholder.com/150"
         className="h-16 w-16 rounded-full object-cover object-center p-1 border-2 border-pink-600"
       />
       <Link to={`/${username}`} className="text-xs">

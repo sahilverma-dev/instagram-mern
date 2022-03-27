@@ -36,10 +36,10 @@ const PostCard = ({ post }) => {
               className="block h-9 w-9 border border-gray-400 aspect-square object-cover object-top rounded-full"
             />
           </Link>
-          <div>
+          <Link to={`/${post.user.username}`} className="block">
             <p className="text-sm font-semibold">{[post.user.username]}</p>
             <p className="text-[8px] text-gray-500">{[post.user.name]}</p>
-          </div>
+          </Link>
         </div>
         <div className="flex items-center gap-1">
           {post.likes > 0 && (

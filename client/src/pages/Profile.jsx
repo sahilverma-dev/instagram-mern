@@ -20,8 +20,8 @@ const Profile = () => {
         exit="exit"
       >
         <div className="flex flex-col md:flex-row gap-1">
-          <div className="md:w-[300px] w-full flex-shrink-0 static md:min-h-screen h-auto md:p-0 p-2">
-            <div className="flex flex-col items-center p-2">
+          <div className="md:w-[300px] w-full flex-shrink-0 static md:min-h-screen h-auto md:p-2 p-2">
+            <div className="flex flex-col items-center">
               <div className="relative h-20 w-20 aspect-square rounded-full p-1 border-pink-500 border-2">
                 <img
                   src="https://avatars.githubusercontent.com/u/83828231"
@@ -30,7 +30,7 @@ const Profile = () => {
                 />
                 <VerifiedIcon className="absolute bottom-0 right-0 text-xl text-blue-700" />
               </div>
-              <div className="flex my-4 items-center w-full text-center justify-between">
+              <div className="flex my-4 items-center w-full text-center justify-around md:justify-between">
                 <div>
                   <span className="font-semibold text-lg">
                     {formatNumder(14)}
@@ -39,7 +39,7 @@ const Profile = () => {
                 </div>
                 <div>
                   <span className="font-semibold text-lg">
-                    {formatNumder(1000)}
+                    {formatNumder(9000000)}
                   </span>
                   <p className="text-gray-500 text-sm">followers</p>
                 </div>
@@ -78,7 +78,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div className="grid flex-grow grid-cols-3 md:max-h-screen md:overflow-y-scroll gap-1 md:p-0 p-2 lg:gap-5">
+          <div className="grid flex-grow grid-cols-3 md:max-h-screen md:overflow-y-scroll gap-1 lg:gap-5">
             {fakePostData.map((post, index) => (
               <ProfilePostCard key={post.id} post={post} />
             ))}
