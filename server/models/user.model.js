@@ -15,6 +15,10 @@ const UserSchema = new Schema(
       type: String,
       required: [true, "Email is required"],
     },
+    verified: {
+      type: Boolean,
+      default: false,
+    },
     link: {
       type: String,
     },

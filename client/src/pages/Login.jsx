@@ -58,6 +58,9 @@ const Login = () => {
     setDisabled(email.length > 0 && password.length > 0 ? false : true);
   }, [email, password]);
 
+  useEffect(() => {
+    if (user) navigate("/");
+  }, []);
   return (
     <>
       <div className="h-screen w-screen flex flex-wrap items-center justify-center p-3">
@@ -174,7 +177,7 @@ const Login = () => {
               <p className="text-sm ">Get the app</p>
               <a
                 target="_blank"
-                href="https://github.com/theviralboy/instagram-firebase"
+                href="https://github.com/theviralboy/instagram-mern"
                 className="text-sm"
               >
                 <img src="/images/get-it-on-github.png" className="h-16" />

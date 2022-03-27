@@ -47,7 +47,7 @@ const navigationData = [
 const Header = () => {
   const [sticky, setSticky] = useState(false);
 
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   useEffect(() => {
     console.log(user);
     const handleScroll = () => {
@@ -91,19 +91,22 @@ const Header = () => {
             />
           ))}
         </div>
-        <div className="flex items-center justify-end w-[120px] gap-3">
-          <Link to="/chat" className="block relative p-2 aspect-square">
-            {/* <div className="absolute top-0 right-0 aspect-square p-1 rounded-full text-white font-semibold bg-red-600"></div> */}
-            <SendIcon size={20} />
-          </Link>
-          <Link to="/profile">
-            <img
-              src="https://avatars.githubusercontent.com/u/83828231"
-              className="block h-7 w-7 aspect-square rounded-full border border-black"
-              alt="user"
-            />
-          </Link>
-        </div>
+        {user && (
+          <div className="flex items-center justify-end w-[120px] gap-3">
+            <Link to="/chat" className="block relative p-2 aspect-square">
+              {/* <div className="absolute top-0 right-0 aspect-square p-1 rounded-full text-white font-semibold bg-red-600"></div> */}
+              <SendIcon size={20} />
+            </Link>
+            <Link to="/profile">
+              <img
+                src={user.profilePic}
+                className="block h-7 w-7 aspect-square rounded-full border border-black"
+                alt={user.name}
+                // onClick={logout}
+              />
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

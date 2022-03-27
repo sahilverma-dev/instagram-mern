@@ -15,7 +15,8 @@ const AuthProvider = ({ children }) => {
       // decode the token
       const decoded = jwtDecode(token);
 
-      setUser(JSON.parse(user));
+      // set the user
+      setUser(decoded.user);
       setLoading(false);
     } else {
       setLoading(false);
@@ -34,13 +35,36 @@ const AuthProvider = ({ children }) => {
         data: { email, password },
       });
       console.log(data);
-      localStorage.setItem("instagram-mern-user", JSON.stringify(data));
+      localStorage.setItem(
+        "instagram-mern-user",
+        JSON.stringify({ token: data.token })
+      );
       setUser(data);
     } catch (error) {
       console.log(error);
     }
   };
-  const signUp = async (email, password, username, fullname) => {};
+  const signUp = async (email, password, username, name) => {
+    try {
+      const { data } = await axios({
+        // url: `${process.env.API_URL}/api/v1/user/signup`,
+        url: `http://localhost:5000/api/v1/user/register`,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: { email, password, username, name },
+      });
+      console.log(data);
+      localStorage.setItem(
+        "instagram-mern-user",
+        JSON.stringify({ token: data.token })
+      );
+      setUser(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const logout = async () => {
     setUser(null);
     localStorage.removeItem("instagram-mern-user");

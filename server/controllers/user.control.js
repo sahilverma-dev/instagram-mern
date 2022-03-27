@@ -39,15 +39,45 @@ const registerUser = asyncHandler(async (req, res) => {
       password: hashedPassword,
     });
     if (newUser) {
-      res.status(201).json({
-        status: 201,
-        data: {
+      const payload = {
+        user: {
           id: newUser._id,
           name: newUser.name,
           username: newUser.username,
           email: newUser.email,
+          profilePic: newUser.profilePic,
         },
-      });
+      };
+      jwt.sign(
+        payload,
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "1h",
+        },
+        (err, token) => {
+          if (err) {
+            res.json({
+              status: 400,
+              error: "User not found",
+            });
+            throw new Error("User not found");
+          }
+          if (token) {
+            res.status(200).json({
+              status: 200,
+              message: "User logged in successfully",
+              token,
+            });
+          }
+          if (!token) {
+            res.json({
+              status: 400,
+              error: "User not found",
+            });
+            throw new Error("User not found");
+          }
+        }
+      );
     }
     if (!newUser)
       res.status(201).json({
@@ -63,7 +93,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
   const user = await User.findOne({ email });
   if (!user) {
-    res.status(400).json({
+    res.json({
       status: 400,
       error: "User not found",
     });
@@ -71,7 +101,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
-    res.status(400).json({
+    res.json({
       status: 400,
       error: "Password is incorrect",
     });
@@ -94,7 +124,7 @@ const loginUser = asyncHandler(async (req, res) => {
     },
     (err, token) => {
       if (err) {
-        res.status(400).json({
+        res.json({
           status: 400,
           error: "User not found",
         });
@@ -108,7 +138,7 @@ const loginUser = asyncHandler(async (req, res) => {
         });
       }
       if (!token) {
-        res.status(400).json({
+        res.json({
           status: 400,
           error: "User not found",
         });
