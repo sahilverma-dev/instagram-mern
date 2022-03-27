@@ -58,6 +58,7 @@ const Profile = () => {
                 <button className="py-2 w-full rounded bg-gray-500 font-semibold text-white">
                   Unfollow
                 </button>
+                
               )}
               <div className="my-3">
                 <h2 className="font-semibold my-1">Sahil Verma</h2>
