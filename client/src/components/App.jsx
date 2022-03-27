@@ -10,7 +10,7 @@ import Header from "./Header";
 
 import { AnimatePresence } from "framer-motion";
 import Footer from "./Footer";
-
+import { Test } from "../pages/Test";
 
 const App = () => {
   return (
@@ -23,8 +23,8 @@ const App = () => {
           <Route path="/p/:postID" element={<Post />} />
           <Route path="/:username" element={<Profile />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/test" element={<Test />} />
           <Route path="/register" element={<Register />} />
-          
         </Routes>
       </AnimatePresence>
       <Footer />

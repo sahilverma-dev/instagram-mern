@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ProfilePostCard from "../components/ProfilePostCard";
 import { fakePostData } from "../constants/fakePostData";
 import { motion } from "framer-motion";
-import { pageVariants } from "../constants/varients";
+import { container, pageVariants } from "../constants/varients";
 import { formatNumder } from "../utilities";
 
 // icons
@@ -58,7 +58,6 @@ const Profile = () => {
                 <button className="py-2 w-full rounded bg-gray-500 font-semibold text-white">
                   Unfollow
                 </button>
-                
               )}
               <div className="my-3">
                 <h2 className="font-semibold my-1">Sahil Verma</h2>
@@ -79,11 +78,17 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div className="grid flex-grow grid-cols-3 md:max-h-screen md:overflow-y-scroll gap-1 lg:gap-5">
+          <motion.div
+            layout
+            variants={container}
+            initial="hidden"
+            animate="visible"
+            className="grid flex-grow grid-cols-3 md:max-h-screen md:overflow-y-scroll gap-1 lg:gap-5"
+          >
             {fakePostData.map((post, index) => (
               <ProfilePostCard key={post.id} post={post} />
             ))}
-          </div>
+          </motion.div>
         </div>
       </motion.div>
     </div>

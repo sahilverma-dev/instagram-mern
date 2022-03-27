@@ -8,7 +8,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { HiDotsHorizontal as MenuIcon } from "react-icons/hi";
 import { BiHeart as HeartIcon } from "react-icons/bi";
 import { motion } from "framer-motion";
-import { postVarients } from "../constants/varients";
+import { item } from "../constants/varients";
 
 import { formatNumder } from "../utilities";
 
@@ -37,7 +37,7 @@ const Post = () => {
       <div className="mx-4">
         <motion.div
           layout
-          variants={postVarients}
+          variants={item}
           initial="hidden"
           animate="visible"
           exit="exit"

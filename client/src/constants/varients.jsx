@@ -21,52 +21,24 @@ export const pageVariants = {
   },
 };
 
-export const postContainerVariants = {
-  hidden: {
-    opacity: 0,
-    x: -100,
-  },
+export const container = {
+  hidden: { opacity: 0, x: "-100wh" },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      staggerChildren: 0.1,
       type: "spring",
       stiffness: 100,
       damping: 15,
-    },
-  },
-  exit: {
-    opacity: 0,
-    x: -100,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 15,
+      staggerChildren: 0.2,
     },
   },
 };
-export const postVarients = {
-  hidden: {
-    opacity: 0,
-    x: -100,
-  },
+
+export const item = {
+  hidden: { x: -20, opacity: 0 },
   visible: {
-    opacity: 1,
     x: 0,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 15,
-    },
-  },
-  exit: {
-    opacity: 0,
-    x: 100,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 15,
-    },
+    opacity: 1,
   },
 };

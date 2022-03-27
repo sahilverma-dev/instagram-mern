@@ -8,20 +8,11 @@ import { formatNumder } from "../utilities";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion } from "framer-motion";
-import { postVarients } from "../constants/varients";
+import { item, postVarients } from "../constants/varients";
 
-const PostCard = ({post}) => {
-
-  
-
+const PostCard = ({ post }) => {
   return (
-    <motion.div
-      layout
-      variants={postVarients}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+    <motion.div layout variants={item}>
       <Link to={`/p/${post.id}`}>
         <LazyLoadImage
           placeholderSrc="https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg"

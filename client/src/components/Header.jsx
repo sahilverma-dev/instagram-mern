@@ -92,7 +92,7 @@ const Header = () => {
               />
             ))}
           </div>
-          {user && (
+          {user ? (
             <div className="flex items-center justify-end w-[120px] gap-3">
               <Link to="/chat" className="block relative p-2 aspect-square">
                 {/* <div className="absolute top-0 right-0 aspect-square p-1 rounded-full text-white font-semibold bg-red-600"></div> */}
@@ -107,10 +107,25 @@ const Header = () => {
                 />
               </Link>
             </div>
+          ) : (
+            <div className="flex gap-3 items-center">
+              <Link
+                to="/login"
+                className="bg-blue-500 text-white font-semibold text-sm py-1 px-3 rounded"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="text-blue-500 font-semibold text-sm rounded"
+              >
+                Sign Up
+              </Link>
+            </div>
           )}
         </div>
       </div>
-      <div className="fixed bottom-0 left-0 w-full z-50 bg-white flex md:hidden items-center p-4 justify-around gap-6">
+      <div className="fixed bottom-0 left-0 w-full z-50  shadow-md bg-white flex md:hidden items-center p-4 justify-around gap-6">
         {navigationData.map((item, index) => (
           <NavLink
             key={index}

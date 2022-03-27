@@ -12,16 +12,13 @@ import { formatNumder } from "../utilities";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion } from "framer-motion";
-import { postVarients } from "../constants/varients";
+import { item } from "../constants/varients";
 
 const ProfilePostCard = ({ post, span }) => {
   return (
     <motion.div
       layout
-      variants={postVarients}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
+      variants={item}
       className={`${span ? "col-span-2 row-span-2" : ""}`}
     >
       <Link to={`/p/${post.id}`}>
