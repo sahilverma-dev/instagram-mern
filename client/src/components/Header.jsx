@@ -16,6 +16,8 @@ import { RiHeartFill as HeartInActiveIcon } from "react-icons/ri";
 import { RiHeartLine as HeartActiveIcon } from "react-icons/ri";
 import { FiSend as SendIcon } from "react-icons/fi";
 import { useAuth } from "../context/authContext";
+import { MdOutlineDarkMode as DarkModeIcon } from "react-icons/md";
+import { MdOutlineLightMode as LightModeIcon } from "react-icons/md";
 
 const navigationData = [
   {
@@ -44,7 +46,7 @@ const navigationData = [
   },
 ];
 
-const Header = () => {
+const Header = ({ themeChange, darkMode }) => {
   const [sticky, setSticky] = useState(false);
 
   const { user, logout } = useAuth();
@@ -91,7 +93,15 @@ const Header = () => {
                 inActiveIcon={item.inActiveIcon}
               />
             ))}
+            <button onClick={() => themeChange()}>
+              {darkMode ? (
+                <DarkModeIcon color="#343434" size={20} />
+              ) : (
+                <LightModeIcon color="#343434" size={20} />
+              )}
+            </button>
           </div>
+
           {user && (
             <div className="flex items-center justify-end w-[120px] gap-3">
               <Link to="/chat" className="block relative p-2 aspect-square">

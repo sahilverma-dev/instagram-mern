@@ -1,176 +1,165 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { pageVariants } from "../constants/varients";
 import { fakePostData } from "../constants/fakePostData";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { HiDotsHorizontal as MenuIcon } from "react-icons/hi";
-import { BiHeart as HeartIcon } from "react-icons/bi";
-import { motion } from "framer-motion";
-import { postVarients } from "../constants/varients";
-
+import { Link } from "react-router-dom";
 import { formatNumder } from "../utilities";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import Profile from "./Profile";
-import { MdVerified as VerifiedIcon } from "react-icons/md";
+// import { FaRegComment as CommentIcon } from "react-icons/fa";
+import { RiHeartFill as HeartInActiveIcon } from "react-icons/ri";
+import { RiHeartLine as HeartActiveIcon } from "react-icons/ri";
+import { GrNext as NextIcon } from "react-icons/gr";
+import { GrPrevious as PreviousIcon } from "react-icons/gr";
+import { BsBookmark as TagIcon } from "react-icons/bs";
+import { RiChat3Line as CommentIcon } from "react-icons/ri";
+import { FiSend as SendIcon } from "react-icons/fi";
 
-const Post = () => {
+function Post() {
   const { postID } = useParams();
-
-  const [isLiked, setIsLiked] = useState(false);
 
   const post = fakePostData.find((x) => x.id === postID);
 
-  const iconVariants = {
-    liked: {
-      scale: [1, 2, 1],
-      opacity: [0.5, 1, 0],
-    },
-    unliked: {
-      opacity: 0,
-    },
-  };
-
   return (
-    <div className="flex ">
-      <div className="mx-4">
-        <motion.div
-          layout
-          variants={postVarients}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
-          <div className="h-[80vh] w-[70vw]">
-            <LazyLoadImage
-              placeholderSrc="https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg"
-              className="block aspect-square object-cover object-left h-[80vh] w-[70vw] "
-              src={post.postImage}
-              alt={post.cation}
-            />
+    <div className="grid grid-cols-12 gap-2 h-screen">
+      <div className="flex items-center  h-5/6  col-span-2">
+        <div>
+          <img className="" src={post.postImage} alt="" />
 
-            <motion.img
-              src="https://clipart.info/images/ccovers/1499793238facebook-love-emoji-like-png.png"
-              className="relative  mx-auto bottom-[65%]"
-              initial={false}
-              variants={iconVariants}
-              animate={isLiked ? "liked" : "unliked"}
-              onDoubleClick={() => setIsLiked(!isLiked)}
-              width="50"
-              height="50"
-            />
-          </div>
-
-          <div className="flex items-center justify-between p-2">
-            <div className="flex gap-2">
+          <img
+            className="relative h-10 w-10 rounded-full mx-auto bottom-5 bg-white p-1 border border-red-700"
+            src={post.user.profilePic}
+            alt=""
+          />
+        </div>
+      </div>
+      <div className=" flex col-span-1 items-center  h-5/6">
+        <PreviousIcon className=" h-10 w-10 ml-auto " />
+      </div>
+      <div className="flex  h-5/6 shadow-md border  border-gray-300 col-span-6">
+        <img className="w-1/2" src={post.postImage} alt="" />
+        <div className="flex flex-col gap-3 w-full">
+          <div className="flex items-center  w-full justify-between p-2">
+            <div className="flex gap-3">
               <Link to={`/${post.user.username}`}>
                 <LazyLoadImage
                   src={post.user.profilePic}
                   alt={post.user.username}
-                  className="block h-9 w-9 border border-gray-400 aspect-square object-cover object-top rounded-full"
+                  className="block h-9 w-9 border  border-red-700 border-1 p-[1px] aspect-square object-cover object-top rounded-full"
                 />
               </Link>
-              <div>
-                <p className="text-sm font-semibold">{[post.user.username]}</p>
-                <p className="text-[8px] text-gray-500">{[post.user.name]}</p>
-              </div>
+              <Link to={`/${post.user.username}`} className="block">
+                <p className="text-sm font-bold dark:text-white text-gray-800 ">
+                  {[post.user.username]}
+                </p>
+                <p className="text-xs font-bold dark:text-white text-gray-700">
+                  {[post.user.name]}
+                </p>
+              </Link>
             </div>
             <div className="flex items-center gap-1">
-              {post.likes > 0 && (
-                <p
-                  className="text-sm font-semibold mr-2"
-                  title={`${post.likes} likes`}
-                >
-                  {formatNumder(post.likes)} likes
-                </p>
-              )}
-              <button>
-                <HeartIcon
-                  onClick={() => setIsLiked(!isLiked)}
-                  color={isLiked ? "red" : "black"}
-                  size={20}
-                />
-              </button>
               <button>
                 <MenuIcon size={20} />
               </button>
             </div>
           </div>
-        </motion.div>
-      </div>
+          <div className="flex items-center gap-4 mx-2">
+            <button>
+              <HeartActiveIcon className="h-5 w-5" />
+            </button>
+            <button>
+              <CommentIcon className="h-5 w-5" />
+            </button>
+            <button>
+              <SendIcon className="h-5 w-5" />
+            </button>
 
-      <div className="p-1 max-w-7xl  mx-auto ">
-        <motion.div
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        >
-          <div className="flex flex-col md:flex-row gap-1">
-            <div className="md:w-[300px] w-full flex-shrink-0 static md:min-h-screen h-auto md:p-0 p-2">
-              <div className="flex flex-col items-center p-2">
-                <div className="relative h-20 w-20 aspect-square rounded-full p-1 border-pink-500 border-2">
-                  <img
-                    src={post.user.profilePic}
-                    className="h-full w-full aspect-square object-cover object-center rounded-full mx-auto md:mx-0"
-                    alt="user"
-                  />
-                  <VerifiedIcon className="absolute bottom-0 right-0 text-xl text-blue-700" />
-                </div>
-                <div className="flex my-4 items-center w-full text-center justify-between">
-                  <div>
-                    <span className="font-semibold text-lg">
-                      {formatNumder(14)}
-                    </span>
-                    <p className="text-gray-500 text-sm">posts</p>
-                  </div>
-                  <div>
-                    <span className="font-semibold text-lg">
-                      {formatNumder(1000)}
-                    </span>
-                    <p className="text-gray-500 text-sm">followers</p>
-                  </div>
-                  <div>
-                    <span className="font-semibold text-lg">
-                      {formatNumder(0)}
-                    </span>
-                    <p className="text-gray-500 text-sm">following</p>
-                  </div>
-                </div>
-                {true ? (
-                  <button className="py-2 w-full rounded bg-blue-700 font-semibold text-white">
-                    Follow
-                  </button>
-                ) : (
-                  <button className="py-2 w-full rounded bg-gray-500 font-semibold text-white">
-                    Unfollow
-                  </button>
-                )}
-                <div className="my-3">
-                  <h2 className="font-semibold my-1">{post.user.username}</h2>
-                  <p className="text-sm">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Nesciunt aperiam omnis culpa harum expedita! Possimus eaque
-                    distinctio voluptatibus dignissimos odit inventore, eos nisi
-                    laudantium unde.
-                  </p>
-                  <a
-                    href="https://instagram-firebase.netlify.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold text-sm text-blue-700"
-                  >
-                    https://instagram-firebase.netlify.app/
-                  </a>
-                </div>
+            <button className="ml-auto">
+              <TagIcon className="h-5 w-5 " />
+            </button>
+          </div>
+          <div className="flex">
+            <img
+              className="mx-2 h-4 w-4 rounded-full"
+              src={post.user.profilePic}
+              alt=""
+            />
+            <span className="text-xs">
+              liked by <b>someone</b> and <b> {post.likes} </b> others
+            </span>
+          </div>
+
+          <div className="mx-2">
+            <span className="text-xs ">
+              {" "}
+              <b>some_one76 </b> I really love symmetry{" "}
+            </span>
+          </div>
+
+          <div className="mx-2 text-[10px] font-bold text-gray-500">
+            3 hours
+          </div>
+
+          <div className="mx-2">
+            <div className="flex text-xs">
+              <HeartActiveIcon className="h-4 w-4 mt-1" />{" "}
+              <span className="font-bold mx-2"> random99 </span> super!{" "}
+            </div>
+            <div className="flex text-xs">
+              <HeartActiveIcon className="h-4 w-4 mt-1" />{" "}
+              <span className="font-bold mx-2"> random99 </span> super!{" "}
+            </div>
+            <div className="flex text-xs">
+              <HeartActiveIcon className="h-4 w-4 mt-1" />{" "}
+              <span className="font-bold mx-2"> random99 </span> super!{" "}
+            </div>
+            <div className="flex text-xs">
+              <HeartActiveIcon className="h-4 w-4 mt-1" />{" "}
+              <span className="font-bold mx-2"> random99 </span> super!{" "}
+            </div>
+            <div className="flex text-xs">
+              <HeartActiveIcon className="h-4 w-4 mt-1" />{" "}
+              <span className="font-bold mx-2"> random99 </span> super!{" "}
+            </div>
+          </div>
+
+          <div className=" flex  mt-auto">
+            <div className="flex ">
+              <img
+                src={post.user.profilePic}
+                className="mx-2 h-8 w-8 rounded-full  "
+                alt=""
+              />
+              <div className="flex  bg-white w-3/4 border px-5 rounded-full text-sm border-gray-500 ">
+                <input
+                  placeholder="Add a Comment"
+                  className="bg-white outline-none  "
+                  type="text"
+                />
+                <button className="bg-white text-blue-700 font-bold mr-5 rounded-full">
+                  post
+                </button>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
+      </div>
+      <div className=" flex items-center col-span-1 h-5/6">
+        <NextIcon className=" h-10 w-10 " />
+      </div>
+      <div className="flex items-center h-5/6 col-span-2">
+        <div>
+          <img className="" src={post.postImage} alt="" />
+
+          <img
+            className="relative h-10 w-10 rounded-full mx-auto bottom-5 bg-white p-1 border border-red-700"
+            src={post.user.profilePic}
+            alt=""
+          />
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default Post;

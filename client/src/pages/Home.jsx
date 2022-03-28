@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
 
 import { fakePostData } from "../constants/fakePostData";
@@ -13,12 +13,12 @@ const Home = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="lg:p-3 p-1 max-w-6xl  mx-auto"
+      className="lg:p-3   p-1 max-w-6xl  mx-auto"
     >
       <Story />
       <motion.div
         layout
-        className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5"
+        className="grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-5"
       >
         {fakePostData.map((post) => (
           <PostCard key={post.id} post={post} />
