@@ -30,7 +30,7 @@ export const container = {
       type: "spring",
       stiffness: 100,
       damping: 15,
-      staggerChildren: 0.2,
+      staggerChildren: 0.05,
     },
   },
 };

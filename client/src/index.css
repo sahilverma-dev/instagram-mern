@@ -12,3 +12,13 @@ img {
   height: auto;
   object-fit: cover;
 }
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.dark {
+  background-color: #1d1d1d;
+  color: #fff;
+}

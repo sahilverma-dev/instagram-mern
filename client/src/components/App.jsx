@@ -11,6 +11,7 @@ import Header from "./Header";
 import { AnimatePresence } from "framer-motion";
 import Footer from "./Footer";
 import { Test } from "../pages/Test";
+import HomeLogin from "../pages/HomeLogin";
 
 const App = () => {
   return (

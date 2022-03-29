@@ -35,19 +35,25 @@ const Profile = () => {
                   <span className="font-semibold text-lg">
                     {formatNumder(14)}
                   </span>
-                  <p className="text-gray-500 text-sm">posts</p>
+                  <p className="text-gray-500 dark:text-gray-200 text-sm">
+                    posts
+                  </p>
                 </div>
                 <div>
                   <span className="font-semibold text-lg">
                     {formatNumder(9000000)}
                   </span>
-                  <p className="text-gray-500 text-sm">followers</p>
+                  <p className="text-gray-500 dark:text-gray-200 text-sm">
+                    followers
+                  </p>
                 </div>
                 <div>
                   <span className="font-semibold text-lg">
                     {formatNumder(0)}
                   </span>
-                  <p className="text-gray-500 text-sm">following</p>
+                  <p className="text-gray-500 dark:text-gray-200 text-sm">
+                    following
+                  </p>
                 </div>
               </div>
               {true ? (

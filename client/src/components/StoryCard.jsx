@@ -2,10 +2,11 @@ import React from "react";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
-
+import { motion } from "framer-motion";
+import { item } from "../constants/varients";
 const StoryCard = ({ profilePic, username }) => {
   return (
-    <div className="flex flex-col items-center">
+    <motion.div layout variants={item} className="flex flex-col items-center">
       <LazyLoadImage
         src={profilePic}
         alt={username}
@@ -15,7 +16,7 @@ const StoryCard = ({ profilePic, username }) => {
       <Link to={`/${username}`} className="text-xs">
         {username.length > 10 ? `${username.slice(0, 10)}...` : username}
       </Link>
-    </div>
+    </motion.div>
   );
 };
 
