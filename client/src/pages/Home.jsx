@@ -8,7 +8,13 @@ import Story from "../components/Story";
 
 const Home = () => {
   return (
-    <motion.div className="lg:p-3 p-1 max-w-6xl mx-auto">
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="visible"
+      exit="exit"
+      className="lg:p-3 p-1 max-w-6xl mx-auto"
+    >
       <Story />
       <motion.div
         layout

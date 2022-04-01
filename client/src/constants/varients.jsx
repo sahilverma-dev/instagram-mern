@@ -3,7 +3,7 @@ export const pageVariants = {
     opacity: 0,
     x: "-100wh",
   },
-  animate: {
+  visible: {
     opacity: 1,
     x: 0,
     transition: {
@@ -40,5 +40,15 @@ export const item = {
   visible: {
     x: 0,
     opacity: 1,
+  },
+};
+
+export const likeIconVarient = {
+  liked: {
+    scale: [1, 2, 1],
+    opacity: [0.5, 1, 0],
+  },
+  unliked: {
+    opacity: 0,
   },
 };

@@ -8,7 +8,7 @@ import { formatNumder } from "../utilities";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion } from "framer-motion";
-import { item, postVarients } from "../constants/varients";
+import { item } from "../constants/varients";
 
 const PostCard = ({ post }) => {
   return (

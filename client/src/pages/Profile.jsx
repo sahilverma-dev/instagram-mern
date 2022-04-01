@@ -16,7 +16,7 @@ const Profile = () => {
       <motion.div
         variants={pageVariants}
         initial="initial"
-        animate="animate"
+        animate="visible"
         exit="exit"
       >
         <div className="flex flex-col md:flex-row gap-1">

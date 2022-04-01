@@ -10,8 +10,8 @@ const StoryCard = ({ profilePic, username }) => {
       <LazyLoadImage
         src={profilePic}
         alt={username}
-        placeholderSrc="https://via.placeholder.com/150"
-        className="h-16 w-16 rounded-full object-cover object-center p-1 border-2 border-pink-600"
+        placeholderSrc="https://parkridgevet.com.au/wp-content/uploads/2020/11/Profile-300x300.png"
+        className="h-16 w-16 aspect-square rounded-full object-cover object-center p-1 border-2 border-pink-600"
       />
       <Link to={`/${username}`} className="text-xs">
         {username.length > 10 ? `${username.slice(0, 10)}...` : username}

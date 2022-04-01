@@ -139,7 +139,7 @@ const Header = () => {
                 size={20}
               />
               <img
-                src="./images/logo.png"
+                src="/images/logo.png"
                 alt="logo"
                 className="h-8 w-auto dark:invert object-fill"
               />
@@ -158,46 +158,48 @@ const Header = () => {
               ))}
             </div>
           )}
-          {user ? (
-            <div className="flex items-center justify-end w-[120px] gap-3">
-              <button
-                className="aspect-square dark:text-white p-2"
-                onClick={toggleTheme}
-              >
-                {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-              </button>
-              <Link
-                to="/chat"
-                className="block relative dark:text-white p-2 aspect-square"
-              >
-                {/* <div className="absolute top-0 right-0 aspect-square p-1 rounded-full text-white font-semibold bg-red-600"></div> */}
-                <SendIcon size={20} />
-              </Link>
-              <Link to="/profile">
-                <img
-                  src={user.profilePic}
-                  className="block h-7 w-7 aspect-square rounded-full border border-black"
-                  alt={user.name}
-                  // onClick={logout}
-                />
-              </Link>
-            </div>
-          ) : (
-            <div className="flex gap-3 items-center">
-              <Link
-                to="/login"
-                className="bg-blue-500 text-white font-semibold text-sm py-1 px-3 rounded"
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className="text-blue-500 font-semibold text-sm rounded"
-              >
-                Sign Up
-              </Link>
-            </div>
-          )}
+          <div className="flex items-center justify-end md:w-[120px] gap-3">
+            <button
+              className="aspect-square dark:text-white p-2"
+              onClick={toggleTheme}
+            >
+              {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+            </button>
+            {user ? (
+              <>
+                <Link
+                  to="/chat"
+                  className="block relative dark:text-white p-2 aspect-square"
+                >
+                  {/* <div className="absolute top-0 right-0 aspect-square p-1 rounded-full text-white font-semibold bg-red-600"></div> */}
+                  <SendIcon size={20} />
+                </Link>
+                <Link to="/profile">
+                  <img
+                    src={user.profilePic}
+                    className="block h-7 w-7 aspect-square rounded-full border border-black"
+                    alt={user.name}
+                    // onClick={logout}
+                  />
+                </Link>
+              </>
+            ) : (
+              <div className="flex gap-3 items-center">
+                <Link
+                  to="/login"
+                  className="bg-blue-500 text-white font-semibold text-sm py-1 px-3 rounded"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/register"
+                  className="text-blue-500 font-semibold text-sm rounded"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       {user && (
@@ -223,106 +225,108 @@ const Header = () => {
       )}
       {modelOpen && (
         <div className="fixed top-0 flex items-center justify-center left-0 w-screen h-screen z-50">
-          <AnimatePresence>
+          {/* <AnimatePresence> */}
+          <motion.div
+            layout
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setModelOpen(false)}
+            className="absolute h-full w-full bg-black/80 backdrop-blur -z-10 "
+          ></motion.div>
+          <motion.button
+            layout
+            variants={item}
+            onClick={() => setModelOpen(false)}
+            className="absolute md:top-7 md:right-10 top-5 right-3 text-white md:text-5xl text-3xl"
+          >
+            <CloseIcon color="#fff" />
+          </motion.button>
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="visible"
+            layout
+            className="p-3 rounded-lg overflow-hidden w-full"
+          >
             <motion.div
               layout
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setModelOpen(false)}
-              className="absolute h-full w-full bg-black/80 backdrop-blur -z-10 "
-            ></motion.div>
-            <button
-              onClick={() => setModelOpen(false)}
-              className="absolute md:top-7 md:right-10 top-5 right-3 text-white md:text-5xl text-3xl"
+              variants={item}
+              className="bg-white dark:bg-dark-300 rounded-lg w-full max-w-[450px] mx-auto"
             >
-              <CloseIcon color="#fff" />
-            </button>
-            <motion.div
-              variants={container}
-              initial="hidden"
-              animate="visible"
-              layout
-              className="p-3 rounded-lg overflow-hidden w-full"
-            >
-              <motion.div
-                layout
-                variants={item}
-                className="bg-white dark:bg-dark-300 rounded-lg w-full max-w-[450px] mx-auto"
-              >
-                <div className="border-b-2 dark:border-dark-100 py-2 text-center">
-                  Create Post
-                </div>
-                <div className="w-full h-full aspect-square flex items-center justify-center">
-                  <div className="flex flex-col w-full overflow-hidden items-center justify-between ">
-                    {image ? (
-                      <div className="p-2">
-                        <img
-                          src={URL.createObjectURL(image)}
-                          className="w-full h-full rounded max-h-[300px] object-contain border"
-                          alt="image"
-                        />
-                      </div>
-                    ) : (
-                      <div
-                        className="mb-16 cursor-pointer dark:invert"
-                        onClick={() => inputRef.current.click()}
-                      >
-                        <UploadIcon />
-                      </div>
-                    )}
-                    <div className="w-full p-3">
-                      <form className="w-full">
-                        <input
-                          type="file"
-                          className="block w-full px-3 mb-3 py-1.5 text-base font-normal text-gray-800 bg-white dark:bg-dark-600 dark:text-gray-400  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                          accept="image/*"
-                          id="formFile"
-                          // multiple
-                          ref={inputRef}
-                          onChange={(e) => {
-                            setImage(e.target.files[0]);
-                            console.log(e.target.files[0]);
-                          }}
-                        />
-                        {image && (
-                          <>
-                            <input
-                              type="text"
-                              onChange={(e) => setCaption(e.target.value)}
-                              className="block w-full px-3 mb-3 py-1.5 text-base font-normal text-gray-800 bg-white dark:bg-dark-100 dark:text-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                              placeholder="Add a caption"
-                              value={caption}
-                            />
-                            <div
-                              className="w-full flex justify-center"
-                              type="submit"
-                            >
-                              <button
-                                className="bg-blue-500 px-4 py-1 
+              <div className="border-b-2 dark:border-dark-100 py-2 text-center">
+                Create Post
+              </div>
+              <div className="w-full h-full aspect-square flex items-center justify-center">
+                <div className="flex flex-col w-full overflow-hidden items-center justify-between ">
+                  {image ? (
+                    <div className="p-2">
+                      <img
+                        src={URL.createObjectURL(image)}
+                        className="w-full h-full rounded max-h-[300px] object-contain border"
+                        alt="image"
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className="mb-16 cursor-pointer dark:invert"
+                      onClick={() => inputRef.current.click()}
+                    >
+                      <UploadIcon />
+                    </div>
+                  )}
+                  <div className="w-full p-3">
+                    <form className="w-full">
+                      <input
+                        type="file"
+                        className="block w-full px-3 mb-3 py-1.5 text-base font-normal text-gray-800 bg-white dark:bg-dark-600 dark:text-gray-400  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        accept="image/*"
+                        id="formFile"
+                        // multiple
+                        ref={inputRef}
+                        onChange={(e) => {
+                          setImage(e.target.files[0]);
+                          console.log(e.target.files[0]);
+                        }}
+                      />
+                      {image && (
+                        <>
+                          <input
+                            type="text"
+                            onChange={(e) => setCaption(e.target.value)}
+                            className="block w-full px-3 mb-3 py-1.5 text-base font-normal text-gray-800 bg-white dark:bg-dark-100 dark:text-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            placeholder="Add a caption"
+                            value={caption}
+                          />
+                          <div
+                            className="w-full flex justify-center"
+                            type="submit"
+                          >
+                            <button
+                              className="bg-blue-500 px-4 py-1 
                                   text-white font-semibold text-sm rounded block text-center 
                                   sm:inline-block mx-auto"
-                                disabled={caption.length <= 0}
-                              >
-                                {uploading ? (
-                                  <div className="flex gap-2 items-center">
-                                    <div>Uploading</div>
-                                    <SpinnerIcon className="w-3 h-3 animate-spin my-1 mx-auto" />
-                                  </div>
-                                ) : (
-                                  <>{uploadComplete ? "Complete" : "Upload"}</>
-                                )}
-                              </button>
-                            </div>
-                          </>
-                        )}
-                      </form>
-                    </div>
+                              disabled={caption.length <= 0}
+                            >
+                              {uploading ? (
+                                <div className="flex gap-2 items-center">
+                                  <div>Uploading</div>
+                                  <SpinnerIcon className="w-3 h-3 animate-spin my-1 mx-auto" />
+                                </div>
+                              ) : (
+                                <>{uploadComplete ? "Complete" : "Upload"}</>
+                              )}
+                            </button>
+                          </div>
+                        </>
+                      )}
+                    </form>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
-          </AnimatePresence>
+          </motion.div>
+          {/* </AnimatePresence> */}
         </div>
       )}
     </>
