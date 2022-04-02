@@ -9,7 +9,11 @@ import { AnimatePresence, motion } from "framer-motion";
 
 // other
 import { useAuth } from "../context/authContext";
-import { UploadIcon } from "../constants/Extra";
+import {
+  ReelActiveIcon,
+  ReelInactiveIcon,
+  UploadIcon,
+} from "../constants/Extra";
 import { container, item } from "../constants/varients";
 import { useTheme } from "../context/themeContext";
 
@@ -45,19 +49,17 @@ const navigationData = [
     ),
   },
   {
-    name: "Search",
-    path: "/search",
+    name: "Reels",
+    path: "/reels",
     inActiveIcon: (
-      <SearchInActiveIcon
-        className="text-[#343434] dark:text-gray-300"
-        size={20}
-      />
+      <div className="fill-[#343434] dark:fill-gray-300">
+        <ReelInactiveIcon size={20} />
+      </div>
     ),
     activeIcon: (
-      <SearchActiveIcon
-        className="text-[#343434] dark:text-gray-300"
-        size={20}
-      />
+      <div className="fill-[#343434] dark:fill-gray-300">
+        <ReelActiveIcon size={20} />
+      </div>
     ),
   },
   {
@@ -158,7 +160,7 @@ const Header = () => {
               ))}
             </div>
           )}
-          <div className="flex items-center justify-end md:w-[120px] gap-3">
+          <div className="flex items-center justify-end  gap-3">
             <button
               className="aspect-square dark:text-white p-2"
               onClick={toggleTheme}
