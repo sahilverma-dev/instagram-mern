@@ -176,7 +176,7 @@ const Post = () => {
                 <TagFillIcon />
               </button>
             </div>
-            <div className="hidden sm:block sm:border-t dark:border-t-0 w-full font-semibold text-slate-900 text-sm p-2 border">
+            <div className="hidden sm:block sm:border-t dark:border-0 dark:text-white w-full font-semibold text-slate-900 text-sm p-2">
               View all {formatNumder(post?.likes)} comments
             </div>
             <div className="sm:block sm:border-t dark:border-t-0 w-full text-slate-900 p-2">
