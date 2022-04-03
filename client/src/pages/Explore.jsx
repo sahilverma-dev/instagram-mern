@@ -10,8 +10,18 @@ const Explore = () => {
   return (
     <motion.div
       variants={pageVariants}
+      initial="initial"
+      animate="visible"
+      exit="exit"
       className="lg:p-3 p-1 max-w-6xl  mx-auto"
     >
+      <div className="my-2">
+        <input
+          type="text"
+          className="w-full border p-1 md:p-3 text-xs md:text-sm md:rounded-none bg-transparent dark:border-gray-500 outline-slate-900 rounded"
+          placeholder="Search"
+        />
+      </div>
       <motion.div
         layout
         variants={container}

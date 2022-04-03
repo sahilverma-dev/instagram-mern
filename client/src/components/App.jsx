@@ -12,6 +12,7 @@ import { AnimatePresence } from "framer-motion";
 import Footer from "./Footer";
 import { Test } from "../pages/Test";
 import HomeLogin from "../pages/HomeLogin";
+import Reel from "../pages/Reel";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/:username" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/reels" element={<Reel />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </AnimatePresence>

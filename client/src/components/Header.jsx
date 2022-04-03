@@ -176,7 +176,7 @@ const Header = () => {
                   {/* <div className="absolute top-0 right-0 aspect-square p-1 rounded-full text-white font-semibold bg-red-600"></div> */}
                   <SendIcon size={20} />
                 </Link>
-                <Link to="/profile">
+                <Link to={`/${user?.username}`}>
                   <img
                     src={user.profilePic}
                     className="block h-7 w-7 aspect-square rounded-full border border-black"

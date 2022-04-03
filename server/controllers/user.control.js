@@ -157,7 +157,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 
 const getUser = asyncHandler(async (req, res) => {
   const { username } = req.params;
-  const user = await User.findOne({ username });
+  const user = await User.findOne({ username }).populate("posts");
   if (!user) {
     res.status(400).json({
       status: 400,
@@ -167,15 +167,7 @@ const getUser = asyncHandler(async (req, res) => {
   }
   res.status(200).json({
     status: 200,
-    data: {
-      id: user._id,
-      name: user.name,
-      username: user.username,
-      email: user.email,
-      bio: user.bio,
-      profilePic: user.profilePic,
-      posts: user.posts,
-    },
+    user,
   });
 });
 
@@ -191,6 +183,106 @@ const deleteUser = asyncHandler(async (req, res) => {
   res.send("Delete User");
 });
 
+// follow user
+const followUser = asyncHandler(async (req, res) => {
+  const { following, followBy } = req.body;
+  const userToFollow = await User.findById(following);
+  const userFollowBy = await User.findById(followBy);
+  if (!userToFollow) {
+    res.status(400).json({
+      status: 400,
+      error: "User to follow not found",
+    });
+    throw new Error("User to follow not found");
+  }
+  if (!userFollowBy) {
+    res.status(400).json({
+      status: 400,
+      error: "User to follow not found",
+    });
+    throw new Error("User to follow not found");
+  }
+  userToFollow.followers.push(userFollowBy._id);
+  userFollowBy.following.push(userToFollow._id);
+  await userToFollow.save();
+  await userFollowBy.save();
+  res.status(200).json({
+    status: 200,
+    message: "User followed successfully",
+  });
+});
+
+// unfollow user
+const unfollowUser = asyncHandler(async (req, res) => {
+  const { unFollowing, unFollowBy } = req.body;
+  const userToUnfollow = await User.findById(unFollowing);
+  const userUnfollowBy = await User.findById(unFollowBy);
+  if (!userToUnfollow) {
+    res.status(400).json({
+      status: 400,
+      error: "User to unfollow not found",
+    });
+    throw new Error("User to unfollow not found");
+  }
+  if (!userUnfollowBy) {
+    res.status(400).json({
+      status: 400,
+      error: "User to unfollow not found",
+    });
+    throw new Error("User to unfollow not found");
+  }
+  const index = userToUnfollow.followers.indexOf(userUnfollowBy._id);
+  userToUnfollow.followers.splice(index, 1);
+  const index2 = userUnfollowBy.following.indexOf(userToUnfollow._id);
+  userUnfollowBy.following.splice(index2, 1);
+  await userToUnfollow.save();
+  await userUnfollowBy.save();
+  res.status(200).json({
+    status: 200,
+    message: "User unfollowed successfully",
+  });
+});
+
+// get all followers
+const getAllFollowers = asyncHandler(async (req, res) => {
+  const { username } = req.params;
+  const user = await User.findOne({ username }).populate(
+    "followers",
+    "username name profilePic"
+  );
+  if (!user) {
+    res.status(400).json({
+      status: 400,
+      error: "User not found",
+    });
+    throw new Error("User not found");
+  }
+  res.status(200).json({
+    status: 200,
+    followers: user.followers,
+  });
+});
+
+// get all following
+const getAllFollowing = asyncHandler(async (req, res) => {
+  const { username } = req.params;
+  const user = await User.findOne({ username }).populate(
+    "following",
+    "username name profilePic"
+  );
+  if (!user) {
+    res.status(400).json({
+      status: 400,
+      error: "User not found",
+    });
+    throw new Error("User not found");
+  }
+  res.status(200).json({
+    status: 200,
+    following: user.following,
+  });
+});
+
 module.exports = {
   registerUser,
   loginUser,
@@ -199,4 +291,8 @@ module.exports = {
   getAllUsers,
   editUser,
   deleteUser,
+  followUser,
+  unfollowUser,
+  getAllFollowers,
+  getAllFollowing,
 };

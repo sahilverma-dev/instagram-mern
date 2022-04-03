@@ -21,7 +21,7 @@ const ProfilePostCard = ({ post, span }) => {
       variants={item}
       className={`${span ? "col-span-2 row-span-2" : ""}`}
     >
-      <Link to={`/p/${post.id}`}>
+      <Link to={`/p/${post._id}`}>
         <div className="relative group aspect-square overflow-hidden bg-gray-800  text-white  md:mb-1">
           <div className="absolute top-2 right-2 z-30 md:text-xl text-white">
             {/* {post?.isVideo && <PlayIcon />} */}

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // icons
 import { HiDotsHorizontal as MenuIcon } from "react-icons/hi";
+import { FaHeart as HeartFillIcon } from "react-icons/fa";
 import { BiHeart as HeartIcon } from "react-icons/bi";
 import { formatNumder } from "../utilities";
 
@@ -10,10 +11,57 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion } from "framer-motion";
 import { item } from "../constants/varients";
 
+import { useAuth } from "../context/authContext";
+import axios from "axios";
+import { API_BASE } from "../api";
+
 const PostCard = ({ post }) => {
+  const { user } = useAuth();
+  const [likes, setLikes] = useState(0);
+  const [liked, setLiked] = useState(false);
+  useEffect(() => {
+    setLikes(post?.likes?.length);
+    setLiked(post?.likes?.includes(user.id));
+  }, []);
+
+  const likePost = async () => {
+    try {
+      const { data } = await axios({
+        url: `${API_BASE}/api/v1/post/like`,
+        method: "POST",
+        data: {
+          postID: post._id,
+          userID: user.id,
+        },
+      });
+      console.log(data);
+      setLiked(true);
+      setLikes(likes + 1);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const unLikePost = async () => {
+    try {
+      const { data } = await axios({
+        url: `${API_BASE}/api/v1/post/unlike`,
+        method: "POST",
+        data: {
+          postID: post._id,
+          userID: user.id,
+        },
+      });
+      console.log(data);
+      setLiked(false);
+      setLikes(likes - 1);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <motion.div layout variants={item}>
-      <Link to={`/p/${post.id}`}>
+      <Link to={`/p/${post._id}`}>
         <LazyLoadImage
           placeholderSrc="https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg"
           className="block aspect-square object-cover object-center"
@@ -36,16 +84,13 @@ const PostCard = ({ post }) => {
           </Link>
         </div>
         <div className="flex items-center gap-1">
-          {post.likes > 0 && (
-            <p
-              className="text-sm font-semibold mr-2"
-              title={`${post.likes} likes`}
-            >
-              {formatNumder(post.likes)} likes
+          {likes > 0 && (
+            <p className="text-sm font-semibold mr-2" title={`${likes} likes`}>
+              {formatNumder(likes || 0)} likes
             </p>
           )}
-          <button>
-            <HeartIcon size={20} />
+          <button onClick={() => (liked ? unLikePost() : likePost())}>
+            {liked ? <HeartFillIcon fill="#ff2828" /> : <HeartIcon size={20} />}
           </button>
           <button>
             <MenuIcon size={20} />
