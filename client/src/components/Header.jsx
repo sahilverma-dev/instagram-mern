@@ -33,6 +33,8 @@ import { FiSend as SendIcon } from "react-icons/fi";
 import { VscClose as CloseIcon } from "react-icons/vsc";
 import { BsSun as SunIcon } from "react-icons/bs";
 import { IoIosMoon as MoonIcon } from "react-icons/io";
+import axios from "axios";
+import { API_BASE } from "../api";
 
 const navigationData = [
   {
@@ -103,16 +105,58 @@ const Header = () => {
   const { user, logout } = useAuth();
   const inputRef = useRef(null);
 
-  const [percentage, setPercentage] = useState(0);
   const [caption, setCaption] = useState("");
-  const [disabled, setDisabled] = useState(true);
   const [uploadComplete, setUploadComplete] = useState(false);
   const [uploading, setUploading] = useState(false);
-
   const { theme, toggleTheme } = useTheme();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append("image", image);
+      const { data } = await axios({
+        url: "https://api.imgbb.com/1/upload?key=4f4de902f03dc7b666769186181ff990",
+        method: "POST",
+        data: formData,
+      });
+      if (data) {
+        const addToDataBase = async () => {
+          try {
+            const { data: dbData } = await axios({
+              url: `${API_BASE}/api/v1/post/add`,
+              method: "POST",
+              data: {
+                image: {
+                  original: data?.data?.image?.url,
+                  medium: data?.data?.medium?.url,
+                  thumbnail: data?.data?.thumb?.url,
+                },
+                caption,
+                user: user?.id,
+              },
+            });
+            console.log(dbData);
+            setUploadComplete(true);
+            setUploading(false);
+            setModelOpen(false);
+          } catch (error) {
+            console.log(error);
+            setUploading(false);
+          }
+        };
+        addToDataBase();
+      }
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+      setUploading(false);
+    }
+  };
+
   useEffect(() => {
-    // console.log(user);
+    console.log(user);
     const handleScroll = () => {
       window.onscroll = () => {
         if (window.scrollY > 160) {
@@ -278,7 +322,7 @@ const Header = () => {
                     </div>
                   )}
                   <div className="w-full p-3">
-                    <form className="w-full">
+                    <form className="w-full" onSubmit={handleSubmit}>
                       <input
                         type="file"
                         className="block w-full px-3 mb-3 py-1.5 text-base font-normal text-gray-800 bg-white dark:bg-dark-600 dark:text-gray-400  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -288,7 +332,6 @@ const Header = () => {
                         ref={inputRef}
                         onChange={(e) => {
                           setImage(e.target.files[0]);
-                          console.log(e.target.files[0]);
                         }}
                       />
                       {image && (

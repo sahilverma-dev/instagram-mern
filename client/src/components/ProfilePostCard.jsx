@@ -39,15 +39,13 @@ const ProfilePostCard = ({ post, span }) => {
                 </div>
                 <div className="flex items-center">
                   <CommentIcon />
-                  <span className="ml-2">
-                    {post?.comments?.toLocaleString() || 0}
-                  </span>
+                  <span className="ml-2">{post?.comments?.length || 0}</span>
                 </div>
               </div>
             </div>
           </div>
           <LazyLoadImage
-            src={post.postImage}
+            src={post?.image?.original}
             placeholderSrc="https://cutewallpaper.org/24/image-placeholder-png/index-of-img.png"
             alt={post?.id}
             className="h-full w-full aspect-square object-cover object-center"

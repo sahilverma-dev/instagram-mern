@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { container, pageVariants } from "../constants/varients";
 import { formatNumder } from "../utilities";
 
+import NotFound from "../components/NotFound";
+
 // icons
 import { MdVerified as VerifiedIcon } from "react-icons/md";
 import axios from "axios";
@@ -16,15 +18,24 @@ const Profile = () => {
   const { username } = useParams();
   const { user } = useAuth();
   const [profileUser, setProfileUser] = useState(null);
-
+  const [noUser, setNoUser] = useState(false);
   const [follow, setFollow] = useState(false);
   useEffect(() => {
     const unsub = async () => {
-      const { data } = await axios(`${API_BASE}/api/v1/user/${username}`);
-      console.log(data);
-      if (data) {
-        setProfileUser(data?.user);
-        setFollow(data?.user?.followers?.includes(user?.id));
+      try {
+        const { data } = await axios(`${API_BASE}/api/v1/user/${username}`);
+        console.log(data);
+        if (data) {
+          setProfileUser(data?.user);
+          setFollow(data?.user?.followers?.includes(user?.id));
+          setNoUser(false);
+        } else {
+          setProfileUser(null);
+          setNoUser(true);
+        }
+      } catch (error) {
+        setProfileUser(null);
+        setNoUser(true);
       }
     };
     return unsub();
@@ -64,13 +75,18 @@ const Profile = () => {
   };
 
   return (
-    <div className="p-1 max-w-7xl min-h-screen  mx-auto">
-      <motion.div
-        variants={pageVariants}
-        initial="initial"
-        animate="visible"
-        exit="exit"
-      >
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="visible"
+      exit="exit"
+      className="p-1 max-w-7xl min-h-screen  mx-auto"
+    >
+      {noUser ? (
+        <div className="h-screen flex items-center">
+          <NotFound />
+        </div>
+      ) : (
         <div className="flex flex-col md:flex-row gap-1">
           <div className="md:w-[300px] w-full flex-shrink-0 static md:min-h-screen h-auto md:p-2 p-2">
             <div className="flex flex-col items-center">
@@ -154,8 +170,8 @@ const Profile = () => {
             ))}
           </motion.div>
         </div>
-      </motion.div>
-    </div>
+      )}
+    </motion.div>
   );
 };
 

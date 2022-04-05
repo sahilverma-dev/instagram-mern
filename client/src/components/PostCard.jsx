@@ -21,7 +21,7 @@ const PostCard = ({ post }) => {
   const [liked, setLiked] = useState(false);
   useEffect(() => {
     setLikes(post?.likes?.length);
-    setLiked(post?.likes?.includes(user.id));
+    setLiked(post?.likes?.includes(user?.id));
   }, []);
 
   const likePost = async () => {
@@ -65,7 +65,7 @@ const PostCard = ({ post }) => {
         <LazyLoadImage
           placeholderSrc="https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg"
           className="block aspect-square object-cover object-center"
-          src={post.postImage}
+          src={post.image?.original}
           alt={post.cation}
         />
       </Link>

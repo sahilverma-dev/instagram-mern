@@ -137,8 +137,8 @@ const Post = () => {
             onDoubleClick={handleLike}
           >
             <LazyLoadImage
-              src={post?.postImage}
-              className="h-full w-full object-cover max-h-[500px]"
+              src={post?.image?.original}
+              className="h-full w-full object-cover max-h-[500px] min-h-[300px]"
               alt={post?.caption}
             />
           </div>
@@ -170,12 +170,12 @@ const Post = () => {
               </button>
             </div>
             <div
-              className="relative w-full h-full sm:hidden"
+              className="relative w-full h-full  sm:hidden"
               onDoubleClick={handleLike}
             >
               <LazyLoadImage
-                src={post?.postImage}
-                className="h-full w-full object-cover"
+                src={post?.image?.original}
+                className="h-full w-full min-h-[300px] object-cover"
                 alt={post?.caption}
               />
             </div>

@@ -38,7 +38,7 @@ const Home = () => {
         animate="visible"
         className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5"
       >
-        {posts.reverse().map((post) => (
+        {posts?.reverse().map((post) => (
           <PostCard key={post._id} post={post} />
         ))}
       </motion.div>

@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   const date = new Date();
   return (
-    <footer className="text-center p-3 font-thin max-w-4xl md:text-sm text-xs mx-auto dark:text-white text-gray-700 w-full">
+    <footer className="text-center  md:mb-0 mb-16  p-3 font-thin max-w-4xl md:text-sm text-xs mx-auto dark:text-white text-gray-700 w-full">
       <div className="px-3">
         <div className="w-full ">
           <div className="flex items-center flex-wrap justify-between w-full mb-3">

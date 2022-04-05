@@ -4,10 +4,10 @@ const { User } = require("../models/user.model");
 
 // addpost
 const addPost = asyncHandler(async (req, res, next) => {
-  const { caption, postImage, user } = req.body;
+  const { caption, image, user } = req.body;
   const newPost = await Post.create({
     caption,
-    postImage,
+    image: { ...image },
     user,
   });
   if (newPost) {

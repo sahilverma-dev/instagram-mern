@@ -10,9 +10,19 @@ const PostSchema = new Schema(
       type: String,
       required: [true, "Caption is required"],
     },
-    postImage: {
-      type: String,
-      required: [true, "Post Image is required"],
+    image: {
+      original: {
+        type: String,
+        required: [true, "Image is required"],
+      },
+      medium: {
+        type: String,
+        required: [true, "Image is required"],
+      },
+      thumbnail: {
+        type: String,
+        required: [true, "Image is required"],
+      },
     },
     likes: [
       {
