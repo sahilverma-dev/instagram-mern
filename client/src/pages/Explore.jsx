@@ -7,6 +7,7 @@ import ProfilePostCard from "../components/ProfilePostCard";
 import { container, pageVariants } from "../constants/varients";
 import axios from "axios";
 import { API_BASE } from "../api";
+import SearchBar from "../components/SearchBar";
 
 const Explore = () => {
   const [posts, setPosts] = useState([]);
@@ -14,6 +15,7 @@ const Explore = () => {
     const unsub = async () => {
       try {
         const { data } = await axios(`${API_BASE}/api/v1/post/all`);
+
         console.log(data);
         setPosts(data?.posts);
       } catch (error) {
@@ -28,14 +30,10 @@ const Explore = () => {
       initial="initial"
       animate="visible"
       exit="exit"
-      className="lg:p-3 p-1 max-w-6xl  mx-auto"
+      className="lg:p-3 p-1 max-w-6xl  mx-auto  "
     >
-      <div className="my-2">
-        <input
-          type="text"
-          className="w-full border p-1 md:p-3 text-xs md:text-sm md:rounded-none bg-transparent dark:border-gray-500 outline-slate-900 rounded"
-          placeholder="Search"
-        />
+      <div className="my-2 flex justify-start ">
+        <SearchBar />
       </div>
       <motion.div
         layout

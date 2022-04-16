@@ -28,7 +28,7 @@ const ProfilePostCard = ({ post, span }) => {
             {post?.collection && <CollectionIcon className="rotate-180" />}
           </div>
           {/* overlay*/}
-          <div className="absolute text-white opacity-0 group-hover:opacity-100 transition-all cursor-pointer h-full w-full bg-black/40 z-10">
+          <div className="absolute text-white opacity-0 group-hover:opacity-100 transition-all cursor-pointer h-full w-full bg-black/40 z-9">
             <div className="flex h-full justify-center items-center">
               <div className="flex flex-col md:text-xl text-sm md:flex-row md:gap-6">
                 <div className="flex items-center">
