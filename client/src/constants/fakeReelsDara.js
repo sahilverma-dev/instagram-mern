@@ -1,0 +1,258 @@
+export const fakeReelData = [
+  {
+    id: 1,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 2,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 3,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 4,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 1,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 2,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 3,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 4,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 1,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 2,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 3,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 4,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 1,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 2,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 3,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+  {
+    id: 4,
+    caption: "Reel no 1 by Sahil Verma",
+    user: {
+      name: "Sahil Verma",
+      username: "sahilverma.dev",
+      profilePic: "https://avatars.githubusercontent.com/u/83828231",
+      isVerified: true,
+    },
+    likes: [],
+    comments: [],
+    thumbnail:
+      "https://i.pinimg.com/originals/c0/37/2f/c0372feb0069e6289eb938b219e0b0a1.jpg",
+    video: "/reels/1.mp4",
+    duration: "0:10",
+  },
+];

@@ -29,3 +29,23 @@ button:disabled {
   background-color: #1d1d1d;
   color: #fff;
 }
+
+.dark .card-gradient {
+  background: transparent;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(2, 2, 25, 0.7) 80%,
+    #000 100%
+  );
+}
+
+.card-gradient {
+  background: transparent;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(2, 2, 25, 0.7) 80%,
+    #545454 100%
+  );
+}

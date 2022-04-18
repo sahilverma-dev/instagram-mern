@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
 
-import { fakePostData } from "../constants/fakePostData";
 import ProfilePostCard from "../components/ProfilePostCard";
 import { container, pageVariants } from "../constants/varients";
 import axios from "axios";
@@ -28,7 +27,7 @@ const Explore = () => {
       initial="initial"
       animate="visible"
       exit="exit"
-      className="lg:p-3 p-1 max-w-6xl  mx-auto"
+      className="lg:p-3 p-1 max-w-6xl min-h-screen  mx-auto"
     >
       <div className="my-2">
         <input
@@ -48,7 +47,7 @@ const Explore = () => {
           <ProfilePostCard
             key={post._id}
             post={post}
-            span={[1, 16, 27].includes(index + 1)}
+            // span={[1, 16, 27].includes(index + 1)}
           />
         ))}
       </motion.div>

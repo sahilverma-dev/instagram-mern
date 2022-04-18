@@ -40,17 +40,19 @@ const Login = () => {
     else if (password.length < 6)
       showError("Password must be at least 6 characters");
     if (isValidEmail(email) && password.length > 6) {
-      // setFormLoading(true);
+      setFormLoading(true);
       const user = await login(email, password);
       if (user) {
         setEmail("");
         setPassword("");
         setFormLoading(false);
       }
-      if (!user)
+      if (!user) {
         showError(
           "Sorry, your password was incorrect. Please double-check your password."
         );
+        setFormLoading(false);
+      }
     }
   };
 

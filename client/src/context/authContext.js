@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import { API_BASE } from "../api";
 
 const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
@@ -8,26 +9,29 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const user = localStorage.getItem("instagram-mern-user");
-    if (user) {
-      const userObj = JSON.parse(user);
-      const { token } = userObj;
-      // decode the token
-      const decoded = jwtDecode(token);
+    const unsub = () => {
+      const user = localStorage.getItem("instagram-mern-user");
+      if (user) {
+        const userObj = JSON.parse(user);
+        const { token } = userObj;
+        // decode the token
+        const decoded = jwtDecode(token);
+        // set the user
+        setUser(decoded.user);
+        setLoading(false);
+      } else {
+        setLoading(false);
+        setUser(null);
+      }
+    };
 
-      // set the user
-      setUser(decoded.user);
-      setLoading(false);
-    } else {
-      setLoading(false);
-      setUser(null);
-    }
+    return unsub();
   }, []);
   const login = async (email, password) => {
     try {
       const { data } = await axios({
         // url: `${process.env.API_URL}/api/v1/user/login`,
-        url: `http://localhost:5000/api/v1/user/login`,
+        url: `${API_BASE}/api/v1/user/login`,
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +43,11 @@ const AuthProvider = ({ children }) => {
         "instagram-mern-user",
         JSON.stringify({ token: data.token })
       );
-      setUser(data);
+
+      const decoded = jwtDecode(data.token);
+      // set the user
+      setUser(decoded.user);
+      return decoded.user;
     } catch (error) {
       console.log(error);
     }
@@ -47,20 +55,27 @@ const AuthProvider = ({ children }) => {
   const signUp = async (email, password, username, name) => {
     try {
       const { data } = await axios({
-        // url: `${process.env.API_URL}/api/v1/user/signup`,
-        url: `http://localhost:5000/api/v1/user/register`,
+        url: `${API_BASE}/api/v1/user/register`,
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        data: { email, password, username, name },
+        data: {
+          email,
+          password,
+          username,
+          name,
+        },
       });
       console.log(data);
       localStorage.setItem(
         "instagram-mern-user",
         JSON.stringify({ token: data.token })
       );
-      setUser(data);
+      const decoded = jwtDecode(data.token);
+      // set the user
+      setUser(decoded.user);
+      return decoded.user;
     } catch (error) {
       console.log(error);
     }

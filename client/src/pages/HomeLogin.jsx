@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import Footer from "../components/Footer";
+import React, { useEffect, useState } from "react";
 
 // icons
 import { ImFacebook2 as FacebookIcon } from "react-icons/im";
@@ -10,26 +9,19 @@ import { ImSpinner3 as SpinnerIcon } from "react-icons/im";
 // utilities
 import { isValidEmail } from "../utilities";
 import { useAuth } from "../context/authContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-
-const HomeLogin = () => {
+const HomeLogin = ({}) => {
   const [email, setEmail] = useState("");
+  // const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [formLoading, setFormLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [showPassword, setShowPassword] = useState(true);
 
-  const navigate = useNavigate();
-
-  const { user, login } = useAuth();
-
-  if (user) navigate("/");
+  const { login } = useAuth();
 
   const showError = (error) => {
     setErrorMsg(error);
@@ -50,6 +42,7 @@ const HomeLogin = () => {
         setEmail("");
         setPassword("");
         setFormLoading(false);
+        // navigate("/");
       }
       if (!user)
         showError(
@@ -67,14 +60,9 @@ const HomeLogin = () => {
       <div className="h-screen w-screen flex flex-wrap items-center justify-center p-3">
         <div className="flex items-center">
           <div className="hidden md:block">
-            <div className="relative h-[500px]">
-              <img
-                src="/images/slides/phone.png"
-                className="absolute h-full w-full"
-                alt="login"
-              />
-              <img
-                src="/images/slides/1.png"
+            <div className="h-[500px]">
+              <LazyLoadImage
+                src="/images/login-side-img.png"
                 className="max-h-[500px]"
                 alt="login"
               />
@@ -173,7 +161,7 @@ const HomeLogin = () => {
                     </div>
                   )}
                   <div className="text-center w-full text-xs font-thin mb-4">
-                    <a href="/forgot-password">Forgot password?</a>
+                    <a href="#">Forgot password?</a>
                   </div>
                 </form>
               </div>
@@ -201,7 +189,6 @@ const HomeLogin = () => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
     </>
   );
 };

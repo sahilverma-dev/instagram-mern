@@ -71,16 +71,16 @@ const PostCard = ({ post }) => {
       </Link>
       <div className="flex items-center justify-between p-2">
         <div className="flex gap-2">
-          <Link to={`/${post.user.username}`}>
+          <Link to={`/${post?.user?.username}`}>
             <LazyLoadImage
-              src={post.user.profilePic}
-              alt={post.user.username}
+              src={post?.user?.profilePic}
+              alt={post?.user?.username}
               className="block h-9 w-9 border border-gray-400 aspect-square object-cover object-top rounded-full"
             />
           </Link>
-          <Link to={`/${post.user.username}`} className="block">
-            <p className="text-sm font-semibold">{[post.user.username]}</p>
-            <p className="text-[8px] text-gray-500">{[post.user.name]}</p>
+          <Link to={`/${post?.user?.username}`} className="block">
+            <p className="text-sm font-semibold">{[post?.user?.username]}</p>
+            <p className="text-[8px] text-gray-500">{[post?.user?.name]}</p>
           </Link>
         </div>
         <div className="flex items-center gap-1">

@@ -34,7 +34,7 @@ const ProfilePostCard = ({ post, span }) => {
                 <div className="flex items-center">
                   <HeartIcon />
                   <span className="ml-2">
-                    {formatNumder(post?.likedBy?.length || 0)}
+                    {formatNumder(post?.likes?.length || 0)}
                   </span>
                 </div>
                 <div className="flex items-center">

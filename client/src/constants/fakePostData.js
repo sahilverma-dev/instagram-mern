@@ -14,6 +14,20 @@ const fakePostData = [
       "https://images.unsplash.com/photo-1644982647708-0b2cc3d910b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&w=1000&q=80",
   },
   {
+    id: "a18772e0-20eb-4ec3-98e7-61d699ac7783",
+    user: {
+      name: "Heather Young",
+      profilePic: "https://randomuser.me/api/portraits/med/women/33.jpg",
+      username: "orangerabbit767",
+    },
+    caption: "orangerabbit767",
+    likes: 95162,
+    collection: false,
+    isVideo: false,
+    postImage:
+      "https://images.unsplash.com/photo-1640622308113-ca5d7b948515?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8&w=1000&q=80",
+  },
+  {
     id: "d6a32ddf-ddee-44d2-a07d-756625aabce6",
     user: {
       name: "Clarissa Quast",
@@ -138,20 +152,6 @@ const fakePostData = [
     isVideo: false,
     postImage:
       "https://images.unsplash.com/photo-1647886281310-363c955a5cf0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&w=1000&q=80",
-  },
-  {
-    id: "a18772e0-20eb-4ec3-98e7-61d699ac7783",
-    user: {
-      name: "Heather Young",
-      profilePic: "https://randomuser.me/api/portraits/med/women/33.jpg",
-      username: "orangerabbit767",
-    },
-    caption: "orangerabbit767",
-    likes: 95162,
-    collection: false,
-    isVideo: false,
-    postImage:
-      "https://images.unsplash.com/photo-1640622308113-ca5d7b948515?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8&w=1000&q=80",
   },
   {
     id: "a877346e-a3bd-42a0-865a-74c9766752c4",

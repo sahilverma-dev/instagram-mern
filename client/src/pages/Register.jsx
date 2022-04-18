@@ -20,7 +20,7 @@ const Register = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [formLoading, setFormLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
 
   const navigate = useNavigate();
   const { user, signUp } = useAuth();
@@ -40,18 +40,22 @@ const Register = () => {
       setFormLoading(true);
 
       const user = await signUp(email, password, username, fullname);
+      console.log(user);
       if (user) {
         setEmail("");
         setFullname("");
         setUsername("");
         setPassword("");
         setFormLoading(false);
+        navigate("/");
       }
 
-      if (!user)
+      if (!user) {
         showError(
           "Sorry, your password was incorrect. Please double-check your password."
         );
+        setFormLoading(false);
+      }
     }
   };
 

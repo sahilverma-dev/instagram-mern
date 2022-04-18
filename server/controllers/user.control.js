@@ -9,21 +9,21 @@ const registerUser = asyncHandler(async (req, res) => {
   const isUserExistUsername = await User.findOne({ username });
   const isUserExistEmail = await User.findOne({ email });
   if (isUserExistUsername) {
-    res.status(400).json({
+    res.json({
       status: 400,
       error: "Username already taken",
     });
     throw new Error("Username already taken");
   }
   if (isUserExistEmail) {
-    res.status(400).json({
+    res.json({
       status: 400,
       error: "Email already taken",
     });
     throw new Error("Email already taken");
   }
   if (!name || !username || !email || !password) {
-    res.status(400).json({
+    res.json({
       status: 400,
       error: "Please fill all the fields",
     });
@@ -52,7 +52,7 @@ const registerUser = asyncHandler(async (req, res) => {
         payload,
         process.env.JWT_SECRET,
         {
-          expiresIn: "1h",
+          expiresIn: "30d",
         },
         (err, token) => {
           if (err) {
@@ -78,14 +78,14 @@ const registerUser = asyncHandler(async (req, res) => {
           }
         }
       );
-    }
-    if (!newUser)
+    } else {
       res.status(201).json({
         status: 201,
-        message: "User created successfully",
+        message: "Can't create user",
         data: newUser,
       });
-    throw new Error("User not created");
+      throw new Error("User not created");
+    }
   }
 });
 
@@ -159,7 +159,7 @@ const getUser = asyncHandler(async (req, res) => {
   const { username } = req.params;
   const user = await User.findOne({ username }).populate("posts");
   if (!user) {
-    res.status(400).json({
+    res.json({
       status: 400,
       error: "User not found",
     });
@@ -189,14 +189,14 @@ const followUser = asyncHandler(async (req, res) => {
   const userToFollow = await User.findById(following);
   const userFollowBy = await User.findById(followBy);
   if (!userToFollow) {
-    res.status(400).json({
+    res.json({
       status: 400,
       error: "User to follow not found",
     });
     throw new Error("User to follow not found");
   }
   if (!userFollowBy) {
-    res.status(400).json({
+    res.json({
       status: 400,
       error: "User to follow not found",
     });
@@ -218,14 +218,14 @@ const unfollowUser = asyncHandler(async (req, res) => {
   const userToUnfollow = await User.findById(unFollowing);
   const userUnfollowBy = await User.findById(unFollowBy);
   if (!userToUnfollow) {
-    res.status(400).json({
+    res.json({
       status: 400,
       error: "User to unfollow not found",
     });
     throw new Error("User to unfollow not found");
   }
   if (!userUnfollowBy) {
-    res.status(400).json({
+    res.json({
       status: 400,
       error: "User to unfollow not found",
     });
@@ -251,7 +251,7 @@ const getAllFollowers = asyncHandler(async (req, res) => {
     "username name profilePic"
   );
   if (!user) {
-    res.status(400).json({
+    res.json({
       status: 400,
       error: "User not found",
     });
@@ -271,7 +271,7 @@ const getAllFollowing = asyncHandler(async (req, res) => {
     "username name profilePic"
   );
   if (!user) {
-    res.status(400).json({
+    res.json({
       status: 400,
       error: "User not found",
     });

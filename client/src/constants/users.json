@@ -1,0 +1,249 @@
+[{
+  "_id": {
+    "$oid": "623fd85526ccbf6aba269e2d"
+  },
+  "name": "Sahil Verma",
+  "username": "sahilverma.dev",
+  "email": "domainsahil007@gmail.com",
+  "verified": true,
+  "category": "Normal User",
+  "password": "$2a$15$nzscrp7Gt6uQLVL5AeZw2eEGG15DkioVMBL0.ry7SL89ckHCQzTF6",
+  "profilePic": "https://avatars.githubusercontent.com/u/83828231",
+  "bio": "Hey there! I am new in this Instagram clone.",
+  "posts": [
+    [
+      {
+        "$oid": "624c329bf46739aacad92901"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92902"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92903"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92904"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92905"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92906"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92907"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92908"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92909"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad9290a"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad9290b"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad9290c"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad9290d"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad9290e"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad9290f"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92910"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92911"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92912"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92913"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92914"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92915"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92916"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92917"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92918"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92919"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad9291a"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad9291b"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad9291c"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad9291d"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad9291e"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad9291f"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92920"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92921"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92922"
+      }
+    ],
+    [
+      {
+        "$oid": "624c329bf46739aacad92923"
+      }
+    ],
+    [
+      {
+        "$oid": "624c33391ae4d555212e1fd9"
+      }
+    ],
+    [
+      {
+        "$oid": "624d1d108f4b3658a4d2fdc0"
+      }
+    ],
+    [
+      {
+        "$oid": "624db4840141a49929ebea66"
+      }
+    ]
+  ],
+  "followers": [],
+  "following": [
+    {
+      "$oid": "62485ece54b735a66b42a8ad"
+    }
+  ],
+  "createdAt": {
+    "$date": "2022-03-27T03:21:57.794Z"
+  },
+  "updatedAt": {
+    "$date": "2022-04-06T15:40:52.966Z"
+  },
+  "__v": 22,
+  "link": "https://instagram-firebase.netlify.app/"
+},{
+  "_id": {
+    "$oid": "62485ece54b735a66b42a8ad"
+  },
+  "name": "Brad Gibson",
+  "username": "silverswan131",
+  "email": "brad.gibson@example.com",
+  "verified": false,
+  "category": "Normal User",
+  "password": "$2a$15$vWMSVo7Uj57h66S76YhfyungSKRjX.0dS/gwL/x9AiHWE1DKBhOXu",
+  "profilePic": "https://randomuser.me/api/portraits/med/men/75.jpg",
+  "bio": "Hey there! I am new in this Instagram clone.",
+  "posts": [
+    {
+      "$oid": "62485fa954b735a66b42a8bc"
+    }
+  ],
+  "followers": [
+    {
+      "$oid": "623fd85526ccbf6aba269e2d"
+    }
+  ],
+  "following": [],
+  "createdAt": {
+    "$date": "2022-04-02T14:33:50.218Z"
+  },
+  "updatedAt": {
+    "$date": "2022-04-03T11:00:44.066Z"
+  },
+  "__v": 16
+}]

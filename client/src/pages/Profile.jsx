@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ProfilePostCard from "../components/ProfilePostCard";
 import { fakePostData } from "../constants/fakePostData";
 import { motion } from "framer-motion";
@@ -17,6 +17,7 @@ import { useAuth } from "../context/authContext";
 const Profile = () => {
   const { username } = useParams();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [profileUser, setProfileUser] = useState(null);
   const [noUser, setNoUser] = useState(false);
   const [follow, setFollow] = useState(false);
@@ -31,6 +32,7 @@ const Profile = () => {
           setNoUser(false);
         } else {
           setProfileUser(null);
+          navigate("/");
           setNoUser(true);
         }
       } catch (error) {
@@ -165,7 +167,7 @@ const Profile = () => {
             animate="visible"
             className="grid flex-grow grid-cols-3 md:max-h-screen md:overflow-y-scroll gap-1 lg:gap-5"
           >
-            {profileUser?.posts?.map((post) => (
+            {profileUser?.posts?.reverse()?.map((post) => (
               <ProfilePostCard key={post._id} post={post} />
             ))}
           </motion.div>

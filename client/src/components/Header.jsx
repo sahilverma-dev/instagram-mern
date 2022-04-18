@@ -257,7 +257,7 @@ const Header = () => {
         </button>
       )}
       {user && (
-        <div className="fixed bottom-0 left-0 w-full z-50  shadow-md bg-white dark:bg-dark-400 flex md:hidden items-center p-4 justify-around gap-6">
+        <div className="fixed bottom-0 left-0 w-full z-50  shadow-md bg-gray-100 dark:bg-dark-400 flex md:hidden items-center p-4 justify-around border-t gap-6">
           {navigationData.map((item, index) => (
             <NavLink
               key={index}
