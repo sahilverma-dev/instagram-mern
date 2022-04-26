@@ -29,11 +29,6 @@ const Explore = () => {
       initial="initial"
       animate="visible"
       exit="exit"
-<<<<<<< HEAD
-      className="lg:p-3 p-1 max-w-6xl min-h-screen  mx-auto"
-=======
-      className="lg:p-3 p-1 max-w-6xl  mx-auto  "
->>>>>>> 5d15bb5aa7dc354bed812ba3c48501d10e487f29
     >
       <div className="my-2 flex justify-start ">
         <SearchBar />
