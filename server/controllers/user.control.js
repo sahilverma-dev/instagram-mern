@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 
 const bcrypt = require("bcryptjs");
 const { User } = require("../models/user.model");
+const ApiFeatures = require("../utils/apifeatures");
 
 const registerUser = asyncHandler(async (req, res) => {
   const { name, username, email, password } = req.body;
@@ -172,8 +173,27 @@ const getUser = asyncHandler(async (req, res) => {
 });
 
 const getAllUsers = asyncHandler(async (req, res) => {
-  res.send("Get All Users");
+  const apifeatures = new ApiFeatures(User.find(), req.query).search();
+  const users = await apifeatures.query;
+  try {
+    res.status(200).json({
+      status: 200,
+      users,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+// exports.getAllProducts = catchAsyncErrors(async (req, res) => {
+//   const apifeatures = new ApiFeatures(Product.find(), req.query).search();
+//   const products = await apifeatures.query;
+//   res.status(200).json({
+//     success: true,
+//     products,
+//   });
+
+// });
 
 const editUser = asyncHandler(async (req, res) => {
   res.send("Edit User");

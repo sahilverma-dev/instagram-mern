@@ -16,7 +16,7 @@ import { BsBookmarkFill as TagFillIcon } from "react-icons/bs";
 import { FaHeart as HeartFillIcon } from "react-icons/fa";
 import { RiChat3Line as CommentIcon } from "react-icons/ri";
 import { FiSend as SendIcon } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { item } from "../constants/varients";
 import { formatNumder } from "../utilities";
 
@@ -123,13 +123,7 @@ const Post = () => {
   };
 
   return (
-    <motion.div
-      variants={pageVariants}
-      initial="initial"
-      animate="visible"
-      exit="exit"
-      className="py-6 max-w-5xl min-h-screen mx-auto"
-    >
+    <div className="py-6 max-w-5xl min-h-screen mx-auto">
       {post && (
         <div className="sm:flex border dark:border-0 dark:bg-dark-600">
           <div
@@ -194,21 +188,12 @@ const Post = () => {
                 {post?.caption || "No Caption"}
               </div>
               {post?.comments?.length > 0 && (
-                <motion.div
+                <div
                   layout
-                  variants={container}
-                  initial="initial"
-                  animate="visible"
-                  exit="exit"
                   className="flex-col hidden sm:flex gap-4 px-2 my-2 w-full"
                 >
                   {post?.comments?.map((comment, index) => (
-                    <motion.div
-                      variants={item}
-                      layout
-                      key={index}
-                      className="flex gap-2"
-                    >
+                    <div key={index} className="flex gap-2">
                       <Link
                         to={`/${comment?.user?.username}`}
                         className="h-8 w-8 aspect-square rounded-full"
@@ -227,9 +212,9 @@ const Post = () => {
                         </Link>
                         <span className="w-full ml-1">{comment?.comment}</span>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
-                </motion.div>
+                </div>
               )}
             </div>
             {user ? (
@@ -296,7 +281,7 @@ const Post = () => {
           </div>
         </div>
       )}
-    </motion.div>
+    </div>
   );
 };
 
