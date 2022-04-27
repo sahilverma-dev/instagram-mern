@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ProfilePostCard from "../components/ProfilePostCard";
 import { fakePostData } from "../constants/fakePostData";
 import { motion } from "framer-motion";
@@ -128,21 +128,32 @@ const Profile = () => {
                   </p>
                 </div>
               </div>
-              {user?.id !== profileUser?._id ? (
-                <button
-                  className={`py-2 w-full rounded ${
-                    follow ? "bg-gray-500" : "bg-blue-700"
-                  } font-semibold text-white`}
-                  onClick={() => {
-                    follow ? unfollowUser() : followUser();
-                  }}
-                >
-                  {follow ? "Unfollow" : "Follow"}
-                </button>
+              {user ? (
+                <>
+                  {user?.id !== profileUser?._id ? (
+                    <button
+                      className={`py-2 w-full rounded ${
+                        follow ? "bg-gray-500" : "bg-blue-700"
+                      } font-semibold text-white`}
+                      onClick={() => {
+                        follow ? unfollowUser() : followUser();
+                      }}
+                    >
+                      {follow ? "Unfollow" : "Follow"}
+                    </button>
+                  ) : (
+                    <button className="py-2 w-full rounded  bg-blue-700 text-white">
+                      Edit Profile
+                    </button>
+                  )}
+                </>
               ) : (
-                <button className="py-2 w-full rounded  bg-blue-700 text-white">
-                  Edit Profile
-                </button>
+                <Link
+                  to="/login"
+                  className="py-2 text-center w-full rounded  bg-blue-700 text-white"
+                >
+                  Login to Follow
+                </Link>
               )}
               <div className="my-3 w-full">
                 <h2 className="font-semibold my-1">{profileUser?.name}</h2>
