@@ -8,11 +8,13 @@ const {
   getAllFollowers,
   getAllFollowing,
   getAllUsers,
+  searchUser,
 } = require("../controllers/user.control");
 
 const router = Router();
 
 router.get("/all", getAllUsers);
+router.get("/search", searchUser);
 router.get("/:username", getUser);
 router.post("/register", registerUser);
 router.post("/login", loginUser);

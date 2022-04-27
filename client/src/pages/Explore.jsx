@@ -14,7 +14,6 @@ const Explore = () => {
     const unsub = async () => {
       try {
         const { data } = await axios(`${API_BASE}/api/v1/post/all`);
-
         console.log(data);
         setPosts(data?.posts);
       } catch (error) {
@@ -29,6 +28,7 @@ const Explore = () => {
       initial="initial"
       animate="visible"
       exit="exit"
+      className="lg:p-3 p-1 max-w-6xl min-h-screen  mx-auto"
     >
       <div className="my-2 flex justify-start ">
         <SearchBar />
@@ -44,7 +44,7 @@ const Explore = () => {
           <ProfilePostCard
             key={post._id}
             post={post}
-            // span={[1, 16, 27].includes(index + 1)}
+            span={[1, 16, 27].includes(index + 1)}
           />
         ))}
       </motion.div>

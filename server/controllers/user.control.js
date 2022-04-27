@@ -185,16 +185,6 @@ const getAllUsers = asyncHandler(async (req, res) => {
   }
 });
 
-// exports.getAllProducts = catchAsyncErrors(async (req, res) => {
-//   const apifeatures = new ApiFeatures(Product.find(), req.query).search();
-//   const products = await apifeatures.query;
-//   res.status(200).json({
-//     success: true,
-//     products,
-//   });
-
-// });
-
 const editUser = asyncHandler(async (req, res) => {
   res.send("Edit User");
 });
@@ -303,6 +293,25 @@ const getAllFollowing = asyncHandler(async (req, res) => {
   });
 });
 
+// search user
+const searchUser = asyncHandler(async (req, res) => {
+  const { q: username } = req.query;
+  const regex = new RegExp(username, "i");
+  const users = await User.find({ username: regex }).populate("posts");
+  if (!users) {
+    res.json({
+      status: 400,
+      error: "User not found",
+    });
+    throw new Error("User not found");
+  }
+  res.status(200).json({
+    status: 200,
+    total: users.length,
+    users,
+  });
+});
+
 module.exports = {
   registerUser,
   loginUser,
@@ -315,4 +324,5 @@ module.exports = {
   unfollowUser,
   getAllFollowers,
   getAllFollowing,
+  searchUser,
 };
